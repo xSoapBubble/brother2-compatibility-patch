@@ -76,7 +76,9 @@ def synthetic_installer(work, compiler):
     before=snapshot(wrong);run_cli(broken,'--install',wrong,1);assert snapshot(wrong)==before
     harness=work/'InstallerHarness.exe'
     compile_csharp(compiler,['tests/InstallerHarness.cs'],harness,['System.Windows.Forms','System.Drawing'])
-    subprocess.run([str(harness),str(exe),str(work/'ui-preview.png'),str(work/'Isolated desktop'),str(clean)],check=True,timeout=30,capture_output=True)
+    r=subprocess.run([str(harness),str(exe),str(work/'ui-preview.png'),str(work/'Isolated desktop'),str(clean)],timeout=30,capture_output=True)
+    if r.returncode:
+        raise AssertionError(('InstallerHarness',r.returncode,r.stdout.decode('utf-8',errors='replace'),r.stderr.decode('utf-8',errors='replace')))
     return dict(status='passed',source='same installer source, synthetic payload only',cases=11,
                 ui_preview=str((work/'ui-preview.png').resolve()))
 
@@ -91,6 +93,14 @@ def audio_tests(work, compiler, output):
         (work/(name+'.txt')).write_bytes(r.stdout+r.stderr)
         if r.returncode:raise AssertionError((name,r.returncode,r.stdout,r.stderr))
     return dict(status='passed',scope='own native processes; synthetic route fingerprints; verified zero PCM at -10000 only')
+
+def diagnostic_component_test(work,compiler,output):
+    exe=work/'CrashHookNoMonitorProbe.exe'
+    compile_csharp(compiler,['tests/native/CrashHookNoMonitorProbe.cs'],exe)
+    r=subprocess.run([str(exe),str(output/'components/BrotherCrashHook.dll')],capture_output=True,timeout=15)
+    (work/'crash-hook-no-monitor.txt').write_bytes(r.stdout+r.stderr)
+    if r.returncode:raise AssertionError(('CrashHookNoMonitorProbe',r.returncode,r.stdout,r.stderr))
+    return dict(status='passed',scope='Own process; version/export ABI and harmless initialization/unload without a diagnostics monitor')
 
 def licensed_test(work, output, game, compiler):
     source=original_bin(game).parent
@@ -122,6 +132,7 @@ if __name__=='__main__':
     tools=locked_tools(cache)
     work=output/'checks'/uuid.uuid4().hex;work.mkdir(parents=True)
     report={'source_tests':'passed','release':verify(output),'synthetic_installer':synthetic_installer(work,tools['roslyn'])}
+    report['diagnostic_component']=diagnostic_component_test(work,tools['roslyn'],output)
     if a.game:report['licensed_game']=licensed_test(work,output,a.game,tools['roslyn'])
     if a.audio:report['audio']=audio_tests(work,tools['roslyn'],output)
     (output/'check-results.json').write_text(json.dumps(report,indent=2)+'\n')
