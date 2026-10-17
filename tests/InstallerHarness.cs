@@ -4,6 +4,18 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Text;
+[ComImport,Guid("00021401-0000-0000-C000-000000000046")]class TestShellLink {}
+[ComImport,Guid("000214F9-0000-0000-C000-000000000046"),InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+interface ITestShellLinkW {
+ void GetPath([Out,MarshalAs(UnmanagedType.LPWStr)]StringBuilder path,int length,IntPtr data,uint flags);
+ void GetIDList(out IntPtr list);void SetIDList(IntPtr list);
+ void GetDescription([Out,MarshalAs(UnmanagedType.LPWStr)]StringBuilder text,int length);
+ void SetDescription([MarshalAs(UnmanagedType.LPWStr)]string text);
+ void GetWorkingDirectory([Out,MarshalAs(UnmanagedType.LPWStr)]StringBuilder path,int length);
+ void SetWorkingDirectory([MarshalAs(UnmanagedType.LPWStr)]string path);
+ void GetArguments([Out,MarshalAs(UnmanagedType.LPWStr)]StringBuilder args,int length);
+}
 class InstallerHarness {
  [STAThread]static int Main(string[] args){try{
   var assembly=Assembly.LoadFrom(args[0]);
@@ -18,12 +30,12 @@ class InstallerHarness {
   string first=(string)m.Invoke(null,new object[]{root,desktop});DateTime time=File.GetLastWriteTimeUtc(first);
   string second=(string)m.Invoke(null,new object[]{root,desktop});
   if(first!=second||time!=File.GetLastWriteTimeUtc(second)||Directory.GetFiles(desktop).Length!=2||File.ReadAllText(foreign)!="existing user shortcut sentinel")throw new Exception("Shortcut is not idempotent or replaced a user file.");
-  object shell=null,link=null;try{var t=Type.GetTypeFromProgID("WScript.Shell",true);shell=Activator.CreateInstance(t);link=t.InvokeMember("CreateShortcut",BindingFlags.InvokeMethod,null,shell,new object[]{first});
-   foreach(var name in new[]{"TargetPath","WorkingDirectory","Arguments","IconLocation"})Console.WriteLine(name+"="+link.GetType().InvokeMember(name,BindingFlags.GetProperty,null,link,null));
-   if(!String.Equals(Convert.ToString(link.GetType().InvokeMember("TargetPath",BindingFlags.GetProperty,null,link,null)),Path.Combine(root,"Bin","BrotherDiagnostics.exe"),StringComparison.OrdinalIgnoreCase))throw new Exception("Wrong shortcut target.");
-   if(!String.Equals(Convert.ToString(link.GetType().InvokeMember("WorkingDirectory",BindingFlags.GetProperty,null,link,null)),Path.Combine(root,"Bin"),StringComparison.OrdinalIgnoreCase))throw new Exception("Wrong shortcut working directory.");
-   if(Convert.ToString(link.GetType().InvokeMember("Arguments",BindingFlags.GetProperty,null,link,null))!="")throw new Exception("Wrong shortcut arguments.");
-  }finally{if(link!=null&&Marshal.IsComObject(link))Marshal.FinalReleaseComObject(link);if(shell!=null&&Marshal.IsComObject(shell))Marshal.FinalReleaseComObject(shell);}
+  object link=null;try{link=new TestShellLink();((System.Runtime.InteropServices.ComTypes.IPersistFile)link).Load(first,0);var sl=(ITestShellLinkW)link;var target=new StringBuilder(32768);var cwd=new StringBuilder(32768);var arguments=new StringBuilder(32768);sl.GetPath(target,target.Capacity,IntPtr.Zero,4);sl.GetWorkingDirectory(cwd,cwd.Capacity);sl.GetArguments(arguments,arguments.Capacity);
+   Console.WriteLine("TargetPath="+target);Console.WriteLine("WorkingDirectory="+cwd);Console.WriteLine("Arguments="+arguments);
+   if(!String.Equals(target.ToString(),Path.Combine(root,"Bin","BrotherDiagnostics.exe"),StringComparison.OrdinalIgnoreCase))throw new Exception("Wrong shortcut target.");
+   if(!String.Equals(cwd.ToString(),Path.Combine(root,"Bin"),StringComparison.OrdinalIgnoreCase))throw new Exception("Wrong shortcut working directory.");
+   if(arguments.Length!=0)throw new Exception("Wrong shortcut arguments.");
+  }finally{if(link!=null&&Marshal.IsComObject(link))Marshal.FinalReleaseComObject(link);}
   Console.WriteLine("UI preview and isolated shortcut checks passed.");return 0;
  }catch(Exception e){Console.Error.WriteLine(e);return 1;}}
 }

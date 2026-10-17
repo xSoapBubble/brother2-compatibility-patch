@@ -22,6 +22,7 @@
 | Регуляторы громкости и сохранение значений | `patch_audio_bridges.py`, `src/runtime/rea_audio_*.c` |
 | Возвращение звука при смене/переподключении устройства | `patch_audio_device_proxy.py`, `src/runtime/rea_audio_device_proxy.cpp` |
 | Отчёт только при проблеме или ручном запросе | `src/diagnostics/` |
+| Русское имя ярлыка на Windows с другим системным языком | `src/installer/BrotherPatch.cs`: Unicode IShellLinkW/IPersistFile |
 
 ## Возвращение аудиоустройства
 

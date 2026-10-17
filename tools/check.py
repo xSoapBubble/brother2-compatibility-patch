@@ -45,7 +45,7 @@ def synthetic_installer(work, compiler):
         for d in ['Maps','Sounds','Textures']:
             (root/d).mkdir();(root/d/'sentinel.txt').write_bytes(b'own synthetic resource')
         return root
-    clean=fixture('Synthetic game with spaces');before=snapshot(clean)
+    clean=fixture('Синтетическая игра с пробелами');before=snapshot(clean)
     assert run_cli(exe,'--check',clean)['Status']=='compatible' and snapshot(clean)==before
     assert run_cli(exe,'--install',clean)['Changed']==2
     assert (clean/'Bin/Engine.dll').read_bytes()==new and (clean/'Bin/Component.dll').read_bytes()==component

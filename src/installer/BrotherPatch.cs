@@ -12,6 +12,25 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
+[ComImport,Guid("00021401-0000-0000-C000-000000000046")]
+class UnicodeShellLink {}
+[ComImport,Guid("000214F9-0000-0000-C000-000000000046"),InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+interface IShellLinkW {
+ void GetPath([Out,MarshalAs(UnmanagedType.LPWStr)]StringBuilder path,int length,IntPtr findData,uint flags);
+ void GetIDList(out IntPtr list);void SetIDList(IntPtr list);
+ void GetDescription([Out,MarshalAs(UnmanagedType.LPWStr)]StringBuilder text,int length);
+ void SetDescription([MarshalAs(UnmanagedType.LPWStr)]string text);
+ void GetWorkingDirectory([Out,MarshalAs(UnmanagedType.LPWStr)]StringBuilder path,int length);
+ void SetWorkingDirectory([MarshalAs(UnmanagedType.LPWStr)]string path);
+ void GetArguments([Out,MarshalAs(UnmanagedType.LPWStr)]StringBuilder args,int length);
+ void SetArguments([MarshalAs(UnmanagedType.LPWStr)]string args);
+ void GetHotkey(out short key);void SetHotkey(short key);void GetShowCmd(out int command);void SetShowCmd(int command);
+ void GetIconLocation([Out,MarshalAs(UnmanagedType.LPWStr)]StringBuilder path,int length,out int index);
+ void SetIconLocation([MarshalAs(UnmanagedType.LPWStr)]string path,int index);
+ void SetRelativePath([MarshalAs(UnmanagedType.LPWStr)]string path,uint reserved);
+ void Resolve(IntPtr window,uint flags);void SetPath([MarshalAs(UnmanagedType.LPWStr)]string path);
+}
+
 // Installer uses only the selected game directory. No registry changes/backups.
 public class PatchBase { public string Sha256,Blob;public int Size; }
 public class PatchEntry {
@@ -147,17 +166,17 @@ class PatchEngine {
  }
  static string MakeShortcutIn(string root,string desktop){
   string stem="Брат 2 — исправленная версия",path=null;
-  object shell=null,link=null;try{Type type=Type.GetTypeFromProgID("WScript.Shell",true);shell=Activator.CreateInstance(type);
+  object link=null;try{
    for(int i=1;i<100;i++){string p=System.IO.Path.Combine(desktop,stem+(i==1?"":" ("+i+")")+".lnk");if(!File.Exists(p)){if(path==null)path=p;continue;}
-    object existing=null;try{existing=type.InvokeMember("CreateShortcut",BindingFlags.InvokeMethod,null,shell,new object[]{p});Type et=existing.GetType();
-     if(String.Equals(Convert.ToString(et.InvokeMember("TargetPath",BindingFlags.GetProperty,null,existing,null)),System.IO.Path.Combine(root,"Bin","BrotherDiagnostics.exe"),StringComparison.OrdinalIgnoreCase)&&String.Equals(Convert.ToString(et.InvokeMember("WorkingDirectory",BindingFlags.GetProperty,null,existing,null)),System.IO.Path.Combine(root,"Bin"),StringComparison.OrdinalIgnoreCase)&&String.IsNullOrEmpty(Convert.ToString(et.InvokeMember("Arguments",BindingFlags.GetProperty,null,existing,null))))return p;
+    object existing=null;try{existing=new UnicodeShellLink();((System.Runtime.InteropServices.ComTypes.IPersistFile)existing).Load(p,0);var sl=(IShellLinkW)existing;var target=new StringBuilder(32768);var cwd=new StringBuilder(32768);var args=new StringBuilder(32768);sl.GetPath(target,target.Capacity,IntPtr.Zero,4);sl.GetWorkingDirectory(cwd,cwd.Capacity);sl.GetArguments(args,args.Capacity);
+     if(String.Equals(target.ToString(),System.IO.Path.Combine(root,"Bin","BrotherDiagnostics.exe"),StringComparison.OrdinalIgnoreCase)&&String.Equals(cwd.ToString(),System.IO.Path.Combine(root,"Bin"),StringComparison.OrdinalIgnoreCase)&&args.Length==0)return p;
     }catch{}finally{if(existing!=null&&Marshal.IsComObject(existing))Marshal.FinalReleaseComObject(existing);}
    }
    if(path==null)throw new IOException("Не найдено свободное имя ярлыка.");
-   link=type.InvokeMember("CreateShortcut",BindingFlags.InvokeMethod,null,shell,new object[]{path});Type t=link.GetType();
-   foreach(var v in new Dictionary<string,object>{{"TargetPath",System.IO.Path.Combine(root,"Bin","BrotherDiagnostics.exe")},{"WorkingDirectory",System.IO.Path.Combine(root,"Bin")},{"Arguments",""},{"IconLocation",System.IO.Path.Combine(root,"Bin","brother.exe")+",0"},{"Description","Брат 2: Обратно в Америку — исправленная версия"}})t.InvokeMember(v.Key,BindingFlags.SetProperty,null,link,new[]{v.Value});
-   t.InvokeMember("Save",BindingFlags.InvokeMethod,null,link,null);return path;
-  }finally{if(link!=null&&Marshal.IsComObject(link))Marshal.FinalReleaseComObject(link);if(shell!=null&&Marshal.IsComObject(shell))Marshal.FinalReleaseComObject(shell);}
+   link=new UnicodeShellLink();var created=(IShellLinkW)link;
+   created.SetPath(System.IO.Path.Combine(root,"Bin","BrotherDiagnostics.exe"));created.SetWorkingDirectory(System.IO.Path.Combine(root,"Bin"));created.SetArguments("");created.SetIconLocation(System.IO.Path.Combine(root,"Bin","brother.exe"),0);created.SetDescription("Брат 2: Обратно в Америку — исправленная версия");
+   ((System.Runtime.InteropServices.ComTypes.IPersistFile)link).Save(path,true);return path;
+  }finally{if(link!=null&&Marshal.IsComObject(link))Marshal.FinalReleaseComObject(link);}
  }
 }
 public class PatchForm:Form {
