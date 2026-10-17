@@ -52,6 +52,10 @@ python tools/check.py
 Чтобы дополнительно создать все пять исправленных DLL из оригиналов и
 сравнить изменения с опубликованными:
 
+`D:\Games\Brother-original` ниже — условный пример. Замените его своей папкой
+с оригинальной, ещё не исправленной игрой. Для обычной сборки параметр
+`--game` не нужен.
+
 ```powershell
 python tools/build.py --game "D:\Games\Brother-original"
 python tools/check.py --game "D:\Games\Brother-original"
