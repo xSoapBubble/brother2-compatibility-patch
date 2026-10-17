@@ -1,0 +1,132 @@
+{
+  "Bin/ddraw.dll": [
+    {
+      "Sha256": "94895cf6ede8fd0f74ee1447fdc08b7044a9c65a1a25a49a4df893a0370975a3",
+      "Size": 3653632
+    }
+  ],
+  "Bin/DDrawCompat.ini": [
+    {
+      "Sha256": "6e95d78908d8faead82d476df6e4647b8c74fd0223ed9bbc516c06c8f441e339",
+      "Size": 520
+    }
+  ],
+  "Bin/rea_audio.dll": [
+    {
+      "Sha256": "91a3ba3dd882f7e53f47dea4162632985518a457e8b6e5e4c919a95f79a9e3b7",
+      "Size": 434688
+    },
+    {
+      "Sha256": "2b2c615d418fb46bf11f48e4b83575ece46ec73cee7101360a4b94fb0d9f78f1",
+      "Size": 225280
+    },
+    {
+      "Sha256": "aaae2e928aa5652c595f0df4b3024f425ca4e2b9d45d1bf7e4356248d82971c1",
+      "Size": 226816
+    },
+    {
+      "Sha256": "b685f57b18b1721d56732573c21024e42dd1dc6625b02f41a83135cc1f685525",
+      "Size": 429056
+    },
+    {
+      "Sha256": "e29a77e18100f3d51330f00e2914fc8036ba4aad34988972ab0440e2fc747753",
+      "Size": 215552
+    }
+  ],
+  "Bin/BrotherDiagnostics.exe": [
+    {
+      "Sha256": "eef6e897172c591c1bad06ea317f776008093048e41e6d3f8815c9e92fe8606b",
+      "Size": 30208
+    },
+    {
+      "Sha256": "39913fa3d5198036f07745b1a94e9f04b1b0d11a5be418252607b5b92a9df441",
+      "Size": 29696
+    }
+  ],
+  "Bin/BrotherCrashHook.dll": [
+    {
+      "Sha256": "2875ee936910b11461847feb2fcd9bbaadf96c2397f440bd01e3a5184bdc8c4d",
+      "Size": 5632
+    },
+    {
+      "Sha256": "36f76c970feb2173fdc5ced792ef92010cddc7521ec157504acea7af13b7baf3",
+      "Size": 4608
+    }
+  ],
+  "Start-Brother.cmd": [
+    {
+      "Sha256": "4a83ae75fab038404784703f7462d0b05badfcd6ba80b47ddc87f720414e95c6",
+      "Size": 92
+    }
+  ],
+  "Capture-Diagnostics.cmd": [
+    {
+      "Sha256": "ef18bf40c25e17dcf5f1775c62b05a519f9a894418a96193e7e06c515bc1d5d2",
+      "Size": 73
+    }
+  ],
+  "DIAGNOSTICS-RU.txt": [
+    {
+      "Sha256": "8aecff6376c467133795a87141c4eea600701bbd0d1cc3df4f9abc743942b4dd",
+      "Size": 4878
+    },
+    {
+      "Sha256": "3489ab7bf2a4465305120eeb718075141e1fd6ef49a447173d2fba5a9c9546db",
+      "Size": 5205
+    }
+  ],
+  "PATCH-README-RU.txt": [
+    {
+      "Sha256": "b52ad350e9994f542b5c870c3c2ebf83db9835a02dec77f18bbcda66da4347f1",
+      "Size": 3833
+    },
+    {
+      "Sha256": "4681b75aba97e7fc5e04afd510b86be42f71893e042513c8691b67fcd9ec0495",
+      "Size": 6258
+    },
+    {
+      "Sha256": "86ef87f854c30372aa02f2166a855a23961e2ac7dee92b20301858b36b9356df",
+      "Size": 6501
+    },
+    {
+      "Sha256": "f5a12e55360b7f666193e5b0d5516ec799c161237a7f5572bf47cd1f0b0f84aa",
+      "Size": 3634
+    }
+  ],
+  "DDrawCompat-LICENSE.txt": [
+    {
+      "Sha256": "3662a9adfe6feddb077f96dfad3cb30408540a2a3eae5a656b7ff4375e622be0",
+      "Size": 607
+    }
+  ],
+  "LICENSE-PATCH.txt": [
+    {
+      "Sha256": "9b66e4d619e82e534d69c70cd8b8da940f54507ba48f239ce38cf081ae66dfb1",
+      "Size": 1098
+    }
+  ],
+  "LLVM-LICENSE.txt": [
+    {
+      "Sha256": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
+      "Size": 16703
+    }
+  ],
+  "MinGW-LICENSE.txt": [
+    {
+      "Sha256": "99a69660981156c21336fdb5661f89341b013c94e4bf9e1c7467b4745718397f",
+      "Size": 2326
+    }
+  ],
+  "THIRD-PARTY-NOTICES.txt": [
+    {
+      "Sha256": "5c2fad70f8cb353414274e890b273ec4ee107c4e742b7ce7a22aa74902f7b573",
+      "Size": 1342
+    }
+  ],
+  "Zig-LICENSE.txt": [
+    {
+      "Sha256": "5c537d6853e005298a285d508cff9ac7192cea23576c840d485b2b586a7ff177",
+      "Size": 1080
+    }
+  ]
+}

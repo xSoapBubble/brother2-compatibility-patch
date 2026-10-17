@@ -1,0 +1,27 @@
+Brother 2 compatibility patch
+
+Our installer, diagnostics, additional runtime code and patch-generation code
+are MIT-licensed; see LICENSE. This license does not grant rights to the
+original game, its engine, resources, trademarks or third-party software.
+
+DDrawCompat 0.7.2 by narzoul is downloaded from its official GitHub release,
+verified by SHA-256 and distributed without modification.
+https://github.com/narzoul/DDrawCompat/releases/tag/v0.7.2
+See DDrawCompat-LICENSE.txt (third_party/ddrawcompat/LICENSE.txt in source).
+
+The additional native runtime is built with Zig 0.15.2, LLVM/libc++ and MinGW-w64
+runtime/support code. Their license notices are preserved separately:
+LLVM-LICENSE.txt, MinGW-LICENSE.txt and Zig-LICENSE.txt.
+Source copies are in third_party/toolchain/.
+
+Zig: https://ziglang.org/download/0.15.2/
+LLVM: https://llvm.org/
+MinGW-w64: https://www.mingw-w64.org/
+
+The build uses Microsoft.Net.Compilers.Toolset (Roslyn) 4.14.0, fetched from
+NuGet with a pinned archive checksum. The compiler is a build dependency and
+is not included in the patch. Its package retains its own license notices.
+https://www.nuget.org/packages/Microsoft.Net.Compilers.Toolset/4.14.0
+
+Only binary changes to five original DLLs are included. Original game DLLs,
+executables, resource databases and personal save files are not distributed.

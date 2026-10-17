@@ -1,0 +1,38 @@
+[
+  {
+    "path": "Bin/ZBase.dll",
+    "sha256": "3c524e1f254a1c4f33a30e984ffeb2ad462cb22e71d8af6fa895f74899785c07",
+    "size": 1220608,
+    "patch": "patches/upgrades/ZBase.dll.0.b2patch",
+    "target_sha256": "cb3a69c9555912ee29d06ef65f6094ca6ef861c86a20b4aaefbf2f5c50a87578",
+    "target_size": 1228800,
+    "patch_sha256": "589f4553c72206894e3460a35184f9421c7981f11d6e92191bc34d6f0673265c"
+  },
+  {
+    "path": "Bin/ZGUI.dll",
+    "sha256": "a35a60b2d7db383aec62ec3883196cfd7335a22070790bdf1d6480b8daea5b21",
+    "size": 532480,
+    "patch": "patches/upgrades/ZGUI.dll.0.b2patch",
+    "target_sha256": "e346c31769fb1ed072852d7701bb6fd909efed1a25512c5c869f017d22c3aa6a",
+    "target_size": 532480,
+    "patch_sha256": "7e4b0ba3dd49b95ec3937640183193cd6635f26ae6eb13dbcfc6c809ba39795a"
+  },
+  {
+    "path": "Bin/ZGeometry.dll",
+    "sha256": "56dc7222e0267ab6aa7c4e9e170ba7f6249d6a7bd04213026b18136540de1237",
+    "size": 737280,
+    "patch": "patches/upgrades/ZGeometry.dll.0.b2patch",
+    "target_sha256": "64e2a26733295f8df362a5ee022e7141aae75f4acf145f12cb62cb80844be1cf",
+    "target_size": 745472,
+    "patch_sha256": "ff0e809caa52d57afaad0e4f773242b309cb49788a67b94378f34f0617241238"
+  },
+  {
+    "path": "Bin/ZGeometry.dll",
+    "sha256": "5b8be85e77ed83b0d32d4457fac7c61d8f1c1eda7280a9523724ba5673b5f80c",
+    "size": 745472,
+    "patch": "patches/upgrades/ZGeometry.dll.1.b2patch",
+    "target_sha256": "64e2a26733295f8df362a5ee022e7141aae75f4acf145f12cb62cb80844be1cf",
+    "target_size": 745472,
+    "patch_sha256": "ff7b52f42d50329cfbc772dd5a4dd09fe75edf13ac19256fab12064623af9d5e"
+  }
+]

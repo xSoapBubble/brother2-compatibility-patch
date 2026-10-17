@@ -1,0 +1,50 @@
+{
+  "version": "1.0",
+  "files": [
+    {
+      "name": "ZBase.dll",
+      "original_sha256": "22c32a6e5c15c392ea63ee7d9bc19591138143b0daa6a3cea8a6d0638dd559e9",
+      "original_size": 1220608,
+      "patched_sha256": "cb3a69c9555912ee29d06ef65f6094ca6ef861c86a20b4aaefbf2f5c50a87578",
+      "patched_size": 1228800,
+      "patch": "patches/engine/ZBase.dll.b2patch",
+      "patch_sha256": "7f4b7481104710bbb2b754d168a6df0cb9a54dc486222790f7658eb62dac8407"
+    },
+    {
+      "name": "ZPlayer.dll",
+      "original_sha256": "01ba058e5de06818e8146f1a20da2d0a462087a424fd1cdc35faf868e08e2e3e",
+      "original_size": 303104,
+      "patched_sha256": "eb48999901e3df334473998c73168cc71e85a7cf846348a16b554aebebdaacb4",
+      "patched_size": 311296,
+      "patch": "patches/engine/ZPlayer.dll.b2patch",
+      "patch_sha256": "fd6f38510533fa54f486228bec97151fa54075bdcd815eb90aac4965190990c0"
+    },
+    {
+      "name": "ZSOL.dll",
+      "original_sha256": "7bc117fa33f29c414785c352c6bb1e824e25eadc7239f41ed01c12968be8f075",
+      "original_size": 757760,
+      "patched_sha256": "c8e06badf84805ef8d213f2f2cf93f6baa1a89d0a9334283f175d20019a1fc31",
+      "patched_size": 765952,
+      "patch": "patches/engine/ZSOL.dll.b2patch",
+      "patch_sha256": "e977715cb89374cc04e2dc9b688d158454d0e5afb98613eea43e1abda85633fd"
+    },
+    {
+      "name": "ZGUI.dll",
+      "original_sha256": "7da9f915435cd571cca2b9f603b8e8a8e49c5e3dd083d7e936f82d912bf02991",
+      "original_size": 516096,
+      "patched_sha256": "e346c31769fb1ed072852d7701bb6fd909efed1a25512c5c869f017d22c3aa6a",
+      "patched_size": 532480,
+      "patch": "patches/engine/ZGUI.dll.b2patch",
+      "patch_sha256": "4ed9caedc0c80dd71b6a93b51392119f09613476c069a940f7299da8343b07a0"
+    },
+    {
+      "name": "ZGeometry.dll",
+      "original_sha256": "70edbaaf4daab32c22f691c620f6d33114f3aba7b626b4c68fad5561968ed8b6",
+      "original_size": 729088,
+      "patched_sha256": "64e2a26733295f8df362a5ee022e7141aae75f4acf145f12cb62cb80844be1cf",
+      "patched_size": 745472,
+      "patch": "patches/engine/ZGeometry.dll.b2patch",
+      "patch_sha256": "43bacb984840400bf8cb134e4329c9a1f1c399cf1afe7c9913da899b754fed36"
+    }
+  ]
+}

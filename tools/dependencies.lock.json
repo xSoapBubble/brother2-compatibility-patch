@@ -1,0 +1,24 @@
+{
+  "zig": {
+    "version": "0.15.2",
+    "url": "https://ziglang.org/download/0.15.2/zig-x86_64-windows-0.15.2.zip",
+    "archive": "zig-x86_64-windows-0.15.2.zip",
+    "sha256": "3a0ed1e8799a2f8ce2a6e6290a9ff22e6906f8227865911fb7ddedc3cc14cb0c",
+    "entry": "zig-x86_64-windows-0.15.2/zig.exe"
+  },
+  "roslyn": {
+    "version": "4.14.0",
+    "url": "https://api.nuget.org/v3-flatcontainer/microsoft.net.compilers.toolset/4.14.0/microsoft.net.compilers.toolset.4.14.0.nupkg",
+    "archive": "microsoft.net.compilers.toolset.4.14.0.nupkg",
+    "sha256": "941a9cf3ea618d88d01a3dd6b1a45a06bcf07716a9f81ce4031caa3edd24a845",
+    "entry": "tasks/net472/csc.exe"
+  },
+  "ddrawcompat": {
+    "version": "0.7.2",
+    "url": "https://github.com/narzoul/DDrawCompat/releases/download/v0.7.2/DDrawCompat-v0.7.2.zip",
+    "archive": "DDrawCompat-v0.7.2.zip",
+    "sha256": "a932a4dcb2100552b6918fd4a3cc7de138bb97448bbca2a7051954993a397b39",
+    "entry": "ddraw.dll",
+    "dll_sha256": "94895cf6ede8fd0f74ee1447fdc08b7044a9c65a1a25a49a4df893a0370975a3"
+  }
+}

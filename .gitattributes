@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.b2patch binary
+resources/*.cmd -text
+resources/*.txt -text
+third_party/**/*.txt -text
+third_party/** -whitespace

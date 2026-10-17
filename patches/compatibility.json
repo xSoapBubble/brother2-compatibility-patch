@@ -1,0 +1,69 @@
+{
+  "requires": [
+    {
+      "Path": "Bin/brother.exe",
+      "Sha256": "4ecaa38a9e58010e61247514eb9011efa3e3f56c0ddc5eebf6e40fcf2be90f75",
+      "Size": 49152
+    },
+    {
+      "Path": "Bin/inwindow.dll",
+      "Sha256": "e9ac374c5abed7d298d910e786825243d4d787e83ff0caf3f37dc6d469392f0d",
+      "Size": 32768
+    },
+    {
+      "Path": "Bin/ZDirect.dll",
+      "Sha256": "108850e593f3da2b6d03b3cd2d1e2693c3d90ebb7b19f8d118195f25f2fdb7b3",
+      "Size": 356352
+    },
+    {
+      "Path": "Bin/ZEnvironment.dll",
+      "Sha256": "564571efe7c4c134f5a680c0beecc9afe0c6987889d7b29845788f2fc244358b",
+      "Size": 745472
+    },
+    {
+      "Path": "Bin/2brother.main_db",
+      "Sha256": "bfc6457e6a6b007f3cec2458ec1532b94c203c9d50eaeedbd92cdb553db6d9da",
+      "Size": 90970
+    },
+    {
+      "Path": "Bin/cmetro.game_db",
+      "Sha256": "b90e990d7009c27aca35930dea48a8f495d0e582b941315075bdc339a3c47b5c",
+      "Size": 9980607
+    },
+    {
+      "Path": "Bin/garlem.game_db",
+      "Sha256": "f73a3029373f99b9b8ed3c25654070d9d098f98c371d97a3cbd801c1d9795379",
+      "Size": 3002759
+    },
+    {
+      "Path": "Bin/museum.game_db",
+      "Sha256": "4bfb869530ca19ad2ac4dd8c581705de8fba1abdfa904e2d036985adb775c6ae",
+      "Size": 3091008
+    },
+    {
+      "Path": "Bin/police.game_db",
+      "Sha256": "9f450a8f58ec6097c7cc7101bea1efe06cf9febb10854db2da7bff2dbcac9589",
+      "Size": 1787973
+    },
+    {
+      "Path": "Bin/sklad.game_db",
+      "Sha256": "358e648dce43295605d51807b9cf9653bc8249220588ce509557c22b18b8d812",
+      "Size": 4134627
+    },
+    {
+      "Path": "Bin/skyscraper.game_db",
+      "Sha256": "0cf542d16552722c8e67ea44adaff92fd471eb29fecad52d4cc103f559223aba",
+      "Size": 2688541
+    },
+    {
+      "Path": "Bin/torg.game_db",
+      "Sha256": "a8cec4f2d1c06ad737ca1269c964922562dd6e3026a81160cbdad8846ad57508",
+      "Size": 2538546
+    }
+  ],
+  "directories": [
+    "Maps",
+    "Sounds",
+    "Textures"
+  ]
+}

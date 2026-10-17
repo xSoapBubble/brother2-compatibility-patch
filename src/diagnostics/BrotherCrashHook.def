@@ -1,0 +1,4 @@
+LIBRARY BrotherCrashHook
+EXPORTS
+    DIAG_GetVersion=DIAG_GetVersion@0
+    DIAG_Initialize=DIAG_Initialize@4

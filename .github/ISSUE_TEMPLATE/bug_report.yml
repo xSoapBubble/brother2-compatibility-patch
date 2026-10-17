@@ -1,0 +1,32 @@
+name: Ошибка игры или патча
+description: Сообщить о воспроизводимой проблеме
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Версия патча и откуда он установлен
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: Windows, видеокарта и аудиоустройство
+    validations:
+      required: true
+  - type: input
+    id: edition
+    attributes:
+      label: Издание игры
+      description: Оригинальный русский диск или другое издание; есть ли сторонние модификации.
+  - type: textarea
+    id: steps
+    attributes:
+      label: Как повторить
+      description: Уровень, слот и последние действия; что ожидалось и что произошло.
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Текст ошибки или дополнительная диагностика
+      description: Перед публичной загрузкой Brother-Report.zip проверьте его содержимое — там могут быть личные пути и фрагменты памяти.

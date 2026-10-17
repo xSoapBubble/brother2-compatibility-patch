@@ -1,0 +1,34 @@
+# Build products and downloaded tools
+/build/
+/dist/
+/.tools/
+__pycache__/
+*.py[cod]
+*.exe
+*.dll
+*.lib
+*.pdb
+*.o
+*.obj
+*.nupkg
+*.zip
+*.7z
+
+# Installed game and private troubleshooting material never belong in Git
+/Brother/
+/analysis/
+/Reports/
+/Diagnostics/
+*.sav
+*.save_db
+*.game_db
+*.main_db
+*.dmp
+*.LOG
+*.log
+.env
+.env.*
+*.pem
+*.key
+.vs/
+.idea/
